@@ -38,6 +38,13 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+
+                            <li>
+                                <a href="<?php echo e(route('users.edit', Auth::id())); ?>">
+                                    编辑资料
+                                </a>
+                            </li>
+
                             <li>
                                 <a href="<?php echo e(route('logout')); ?>"
                                    onclick="event.preventDefault();

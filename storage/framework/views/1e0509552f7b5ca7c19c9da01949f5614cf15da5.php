@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', $user->name . ' 的个人中心')
 
-@section('content')
+<?php $__env->startSection('title', $user->name . ' 的个人中心'); ?>
+
+<?php $__env->startSection('content'); ?>
 
     <div class="row">
 
@@ -16,10 +16,10 @@
                         <div class="media-body">
                             <hr>
                             <h4><strong>个人简介</strong></h4>
-                            <p>{{ $user->introduction }}</p>
+                            <p><?php echo e($user->introduction); ?></p>
                             <hr>
                             <h4><strong>注册于</strong></h4>
-                            <p>  {{ $user->created_at->diffForHumans() }}</p>
+                            <p>  <?php echo e($user->created_at->diffForHumans()); ?></p>
                         </div>
                         .                    </div>
                 </div>
@@ -29,13 +29,13 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                 <span>
-                    <h1 class="panel-title pull-left" style="font-size:30px;">{{ $user->name }} <small>{{ $user->email }}</small></h1>
+                    <h1 class="panel-title pull-left" style="font-size:30px;"><?php echo e($user->name); ?> <small><?php echo e($user->email); ?></small></h1>
                 </span>
                 </div>
             </div>
             <hr>
 
-            {{-- 用户发布的内容 --}}
+            
             <div class="panel panel-default">
                 <div class="panel-body">
                     暂无数据 ~_~
@@ -44,4 +44,5 @@
 
         </div>
     </div>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
