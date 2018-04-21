@@ -13,7 +13,7 @@
             <?php echo $__env->make('common.error', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="panel-body">
 
-                <form action="<?php echo e(route('users.update', $user->id)); ?>" method="POST" accept-charset="UTF-8">
+                <form action="<?php echo e(route('users.update', $user->id)); ?>" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 
@@ -29,7 +29,16 @@
                         <label for="introduction-field">个人简介</label>
                         <textarea name="introduction" id="introduction-field" class="form-control" rows="3"><?php echo e(old('introduction', $user->introduction )); ?></textarea>
                     </div>
-                    <div class="well well-sm">
+
+                    <div class="form-group">
+                        <label for="" class="avatar-label">用户头像</label>
+                        <input type="file" name="avatar">
+
+                        <?php if($user->avatar): ?>
+                            <br>
+                            <img class="thumbnail img-responsive" src="<?php echo e($user->avatar); ?>" width="200" />
+                        <?php endif; ?>
+                    </div>                    <div class="well well-sm">
                         <button type="submit" class="btn btn-primary">保存</button>
                     </div>
                 </form>
