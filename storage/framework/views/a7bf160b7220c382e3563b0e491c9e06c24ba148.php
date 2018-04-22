@@ -23,7 +23,7 @@
 
                     <div class="media-body meta">
 
-                        <a href="#" title="<?php echo e($topic->category->name); ?>">
+                        <a href="<?php echo e(route('categories.show', $topic->category->id)); ?>" title="<?php echo e($topic->category->name); ?>">
                             <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
                             <?php echo e($topic->category->name); ?>
 
