@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <?php echo $__env->yieldContent('styles'); ?>
 </head>
 
 <body>
@@ -30,5 +31,6 @@
 
 <!-- Scripts -->
 <script src="<?php echo e(asset('js/app.js')); ?>"></script>
+<?php echo $__env->yieldContent('scripts'); ?>
 </body>
 </html>
