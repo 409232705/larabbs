@@ -33,6 +33,11 @@
                     <li><a href="<?php echo e(route('login')); ?>">登录</a></li>
                     <li><a href="<?php echo e(route('register')); ?>">注册</a></li>
                 <?php else: ?>
+                    <li>
+                        <a href="<?php echo e(route('topics.create')); ?>">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
