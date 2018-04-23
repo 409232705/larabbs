@@ -74,4 +74,28 @@
     </script>
 
 <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+    <script type="text/javascript"  src="<?php echo e(asset('js/module.js')); ?>"></script>
+    <script type="text/javascript"  src="<?php echo e(asset('js/hotkeys.js')); ?>"></script>
+    <script type="text/javascript"  src="<?php echo e(asset('js/uploader.js')); ?>"></script>
+    <script type="text/javascript"  src="<?php echo e(asset('js/simditor.js')); ?>"></script>
+
+    <script>
+        $(document).ready(function(){
+            var editor = new Simditor({
+                textarea: $('#editor'),
+                upload: {
+                    url: '<?php echo e(route('topics.upload_image')); ?>',
+                    params: { _token: '<?php echo e(csrf_token()); ?>' },
+                    fileKey: 'upload_file',
+                    connectionCount: 3,
+                    leaveConfirm: '文件上传中，关闭此页面将取消上传。'
+                },
+                pasteImage: true,
+            });
+        });
+    </script>
+
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
