@@ -1,72 +1,64 @@
+<?php $__env->startSection('title', $topic->title); ?>
+<?php $__env->startSection('description', $topic->excerpt); ?>
+
 <?php $__env->startSection('content'); ?>
 
-<div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h1>Topic / Show #<?php echo e($topic->id); ?></h1>
-            </div>
+    <div class="row">
 
-            <div class="panel-body">
-                <div class="well well-sm">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a class="btn btn-link" href="<?php echo e(route('topics.index')); ?>"><i class="glyphicon glyphicon-backward"></i> Back</a>
-                        </div>
-                        <div class="col-md-6">
-                             <a class="btn btn-sm btn-warning pull-right" href="<?php echo e(route('topics.edit', $topic->id)); ?>">
-                                <i class="glyphicon glyphicon-edit"></i> Edit
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs author-info">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="text-center">
+                        作者：<?php echo e($topic->user->name); ?>
+
+                    </div>
+                    <hr>
+                    <div class="media">
+                        <div align="center">
+                            <a href="<?php echo e(route('users.show', $topic->user->id)); ?>">
+                                <img class="thumbnail img-responsive" src="<?php echo e($topic->user->avatar); ?>" width="300px" height="300px">
                             </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <label>Title</label>
-<p>
-	<?php echo e($topic->title); ?>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 topic-content">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h1 class="text-center">
+                        <?php echo e($topic->title); ?>
 
-</p> <label>Body</label>
-<p>
-	<?php echo e($topic->body); ?>
+                    </h1>
 
-</p> <label>User_id</label>
-<p>
-	<?php echo e($topic->user_id); ?>
+                    <div class="article-meta text-center">
+                        <?php echo e($topic->created_at->diffForHumans()); ?>
 
-</p> <label>Category_id</label>
-<p>
-	<?php echo e($topic->category_id); ?>
+                        ⋅
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                        <?php echo e($topic->reply_count); ?>
 
-</p> <label>Reply_count</label>
-<p>
-	<?php echo e($topic->reply_count); ?>
+                    </div>
 
-</p> <label>View_count</label>
-<p>
-	<?php echo e($topic->view_count); ?>
+                    <div class="topic-body">
+                        <?php echo $topic->body; ?>
 
-</p> <label>Last_reply_user_id</label>
-<p>
-	<?php echo e($topic->last_reply_user_id); ?>
+                    </div>
 
-</p> <label>Order</label>
-<p>
-	<?php echo e($topic->order); ?>
+                    <div class="operate">
+                        <hr>
+                        <a href="<?php echo e(route('topics.edit', $topic->id)); ?>" class="btn btn-default btn-xs" role="button">
+                            <i class="glyphicon glyphicon-edit"></i> 编辑
+                        </a>
+                        <a href="#" class="btn btn-default btn-xs" role="button">
+                            <i class="glyphicon glyphicon-trash"></i> 删除
+                        </a>
+                    </div>
 
-</p> <label>Excerpt</label>
-<p>
-	<?php echo e($topic->excerpt); ?>
-
-</p> <label>Slug</label>
-<p>
-	<?php echo e($topic->slug); ?>
-
-</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
