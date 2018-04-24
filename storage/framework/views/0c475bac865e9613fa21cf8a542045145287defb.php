@@ -39,7 +39,7 @@
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <textarea name="body" class="form-control" id="editor" rows="3" placeholder="请填入至少三个字符的内容。" required><?php echo e(old('body', $topic->body )); ?></textarea>
                                     </div>
